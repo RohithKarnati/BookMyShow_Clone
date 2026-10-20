@@ -1,17 +1,28 @@
 package com.bookmyshow.demo.models;
 
-import jakarta.persistence.Entity;
-import lombok.Getter;
-import lombok.Setter;
+import com.bookmyshow.demo.models.constants.Feature;
+import jakarta.persistence.*;
+import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity
-public class Show extends BaseModel{
-    private Date startTime;
-    private Date endTime;
+public class Show extends BaseModel {
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
+
+    @ManyToOne
+    private Auditorium auditorium;
+
+    @Enumerated(EnumType.ORDINAL)
+    @ElementCollection
+    private List<Feature> features;
+
+    @ManyToOne
     private Movie movie;
-    private Screen screen;
+
+    @OneToMany
+    private List<ShowSeat> showSeats;
 }

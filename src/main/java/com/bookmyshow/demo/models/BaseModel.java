@@ -13,10 +13,10 @@ import java.util.Date;
 @Getter
 @Setter
 @MappedSuperclass
-public class BaseModel {
+public abstract class BaseModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private Date createdAt;
     private Date updatedAt;

@@ -1,17 +1,18 @@
 package com.bookmyshow.demo.models;
 
+
 import jakarta.persistence.Entity;
-import lombok.Getter;
-import lombok.Setter;
+import jakarta.persistence.OneToMany;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
-@Setter
+@Data
 @Entity
-public class User extends BaseModel{
-    private int number;
+public class User extends BaseModel {
     private String name;
-    private String phoneNumber;
-    private List<Booking> bookings;
+    private String email;
+
+    @OneToMany
+    private List<Ticket> tickets;
 }
