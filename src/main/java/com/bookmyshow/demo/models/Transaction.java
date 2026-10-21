@@ -2,6 +2,7 @@ package com.bookmyshow.demo.models;
 
 import com.bookmyshow.demo.models.constants.PaymentMode;
 import com.bookmyshow.demo.models.constants.PaymentStatus;
+import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import lombok.Data;
@@ -9,6 +10,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
+@Entity
 public class Transaction extends BaseModel {
     private double transactionAmount;
 

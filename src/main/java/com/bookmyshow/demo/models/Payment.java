@@ -2,10 +2,7 @@ package com.bookmyshow.demo.models;
 
 import com.bookmyshow.demo.models.constants.FinalPaymentStatus;
 import com.bookmyshow.demo.models.constants.PaymentMode;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -21,5 +18,6 @@ public class Payment extends BaseModel {
     private PaymentMode paymentMode;
 
     @OneToMany
+    @JoinColumn(name = "payment_id")
     private List<Transaction> transactions;
 }

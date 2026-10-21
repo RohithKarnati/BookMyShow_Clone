@@ -24,5 +24,6 @@ public class Show extends BaseModel {
     private Movie movie;
 
     @OneToMany
+    @JoinColumn(name = "show_id")
     private List<ShowSeat> showSeats;
 }

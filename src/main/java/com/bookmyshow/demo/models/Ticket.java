@@ -10,8 +10,10 @@ import java.util.List;
 @Entity
 public class Ticket extends BaseModel {
     @OneToMany
+    @JoinColumn(name = "ticket_id")
     private List<ShowSeat> showSeats;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
     private double amount;
 

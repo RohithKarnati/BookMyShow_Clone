@@ -12,6 +12,7 @@ public class Auditorium extends BaseModel {
     private String name;
 
     @OneToMany
+    @JoinColumn(name = "auditorium_id")
     private List<Seat> seats;
 
     @Enumerated(EnumType.ORDINAL)
