@@ -9,9 +9,7 @@ import com.bookmyshow.demo.utils.UserReqValidationImpl;
 import com.bookmyshow.demo.utils.ValidationResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -32,6 +30,16 @@ public class UserController {
         User createdUser = userService.createUser(user);
         UserResponseDTO userResponseDTO = UserMapper.toUserResponseDTO(createdUser);
 
+        return ResponseEntity.ok(userResponseDTO);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<?> getUserById(@RequestParam String userId) {
+        User user = userService.getUserById(userId);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+        UserResponseDTO userResponseDTO = UserMapper.toUserResponseDTO(user);
         return ResponseEntity.ok(userResponseDTO);
     }
 }

@@ -28,8 +28,8 @@ public class TicketServiceImpl implements IService {
     private TicketRepo ticketRepo;
 
     @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
-    public Ticket bookTicket(Integer userId, List<ShowSeat> showSeatList) {
-        User user = userServiceImpl.getUserById(userId.toString());
+    public Ticket bookTicket(long userId, List<ShowSeat> showSeatList) {
+        User user = userServiceImpl.getUserById(String.valueOf(userId));
         if (user == null) {
             throw new IllegalArgumentException("User not found");
         }
